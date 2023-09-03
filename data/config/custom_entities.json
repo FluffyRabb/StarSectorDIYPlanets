@@ -1,0 +1,108 @@
+{
+	"derelict_terraformer":{
+		"defaultName":"Eridani-Utopia Terraforming Rig", # used if name=null in addCustomEntity()
+		"nameInText":"Eridani-Utopia terraforming rig",
+		"shortName":"terraforming rig",
+		"aOrAn":"a",
+		"isOrAre":"is",
+		"defaultRadius":96, # used if radius<0 in addCustomEntity()
+		"customDescriptionId":"derelict_terraformer",
+		"interactionImage":"graphics/illustrations/space_wreckage.jpg",
+		"icon":"graphics/icons/derelict.png",
+		"iconWidth":32,
+		"iconHeight":32,
+		"sprite":"graphics/stations/survey_mothership.png",
+		"spriteWidth":90,
+		"spriteHeight":90,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["has_interaction_dialog", "salvageable", "neutrino_high"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+		"renderCircleIndicator":true,
+		"renderCircleIndicatorSelectionFlash":true,
+	},
+	
+	"terraform_genesis_station":{
+		"defaultName":"Genesis Project Station", # used if name=null in addCustomEntity()
+		"defaultRadius":45, # used if radius<0 in addCustomEntity()
+		"nameInText":"genesis station",
+		"shortName":"genesis station",
+		"customDescriptionId":"station_research_genesis",
+		"interactionImage":"graphics/illustrations/orbital_construction.jpg",
+		"icon":"graphics/icons/station0.png",
+		"iconWidth":20,
+		"iconHeight":20,
+		"sprite":"graphics/stations/station_side00.png",
+		"spriteWidth":40,
+		"spriteHeight":40,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["has_interaction_dialog", "salvageable", "neutrino"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+	},
+	
+	"terraform_hypershunt_site":{
+		"defaultName":"Hypershunt Construction Site", # used if name=null in addCustomEntity()
+		"defaultRadius":45, # used if radius<0 in addCustomEntity()
+		"nameInText":"hypershunt construction site",
+		"shortName":"hypershunt construction site",
+		"customDescriptionId":"station_hypershunt",
+		"interactionImage":"graphics/illustrations/coronal_tap.jpg",
+		"icon":"graphics/icons/coronal_shunt.png",
+		"iconWidth":20,
+		"iconHeight":20,
+		"sprite":"graphics/stations/station_side00.png",
+		"spriteWidth":40,
+		"spriteHeight":40,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["has_interaction_dialog", "terraform_hypershunt_site", "neutrino"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+	},
+	
+	"terraform_coronal_tap":{
+		"defaultName":"Coronal Hypershunt", # used if name=null in addCustomEntity()
+		"nameInText":"coronal hypershunt",
+		"shortName":"coronal hypershunt",
+		"aOrAn":"a",
+		"isOrAre":"is",
+		"defaultRadius":150, # used if radius<0 in addCustomEntity()
+		"customDescriptionId":"coronal_tap",
+		"interactionImage":"graphics/illustrations/coronal_tap.jpg",
+		"icon":"graphics/icons/coronal_shunt.png",
+		"iconWidth":32,
+		"iconHeight":32,
+		"sprite":"graphics/stations/coronal_shunt2.png",
+		"spriteWidth":240,
+		"spriteHeight":240,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["has_interaction_dialog", "salvageable", "neutrino_high", "coronal_tap", "protects_from_corona_in_battle", "terraform_coronal_tap"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+		"renderCircleIndicator":true,
+		"renderCircleIndicatorSelectionFlash":true,
+		#"pluginClass":"com.fs.starfarer.api.impl.campaign.BaseCustomEntityPlugin",
+	},
+}
+
+

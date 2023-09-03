@@ -1,0 +1,2 @@
+name,id,planetary,decivRemove,script,desc,icon,order
+Hydrated,hydrated,TRUE,,com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition,"$market has had significant water imported from off-planet. Once its atmosphere is established, it will be compatible with Terran life.",graphics/icons/markets/water_world_wide.png,420

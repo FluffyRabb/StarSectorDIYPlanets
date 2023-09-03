@@ -1,0 +1,11 @@
+{
+    "displayName": "Standard",
+    "fluxCapacitors": 5,
+    "fluxVents": 5,
+    "goalVariant": true,
+    "hullId": "planetary_accretor",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "planetary_accretor_Standard",
+    "weaponGroups": []
+}

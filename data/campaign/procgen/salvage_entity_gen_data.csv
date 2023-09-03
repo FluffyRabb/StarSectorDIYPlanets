@@ -1,0 +1,12 @@
+id,rating,detection_range,type,autoXP,xpDiscover,xpSalvage,tags,drop_value,drop_random,defFaction,defQuality,probDefenders,minStr,maxStr,maxSize,probStation,stationRole
+derelict_terraformer,0,3500,DISCOVERABLE,200,5000,20000,,basic:15000,"ai_cores2:5,
+ai_cores3:1,
+extended:3x5000,
+rare_tech_low:2,
+terraform_tech:1",derelict,1,1,20,20,4,,
+terraform_genesis_station,0,3500,DISCOVERABLE,200,5000,20000,,basic:15000,"ai_cores2:3,
+ai_cores3:5,
+extended:3x5000,
+rare_tech_low:2,
+terraform_tech:1",remnants,1,1,350,400,30,,
+terraform_coronal_tap,0,3500,DISCOVERABLE,200,5000,20000,,,,omega,0,0,0,0,0,0,

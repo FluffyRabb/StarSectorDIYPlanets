@@ -1,0 +1,108 @@
+id,trigger,conditions,script,text,options,notes
+sal_terraformDetails,ShowSalvageEntityDetails,$customType == derelict_terraformer,"ShowDefaultVisual
+FireBest DerelictPrintExtraInfo","Sparks still flicker from the ancient terraforming rig's engines, a futile attempt to burn long-depleted fuel reserves. Scans indicate multiple system failures caused by prolonged lack of maintenance. A handful of frozen corpses drift nearby, clinging to shattered lifepods, hoping for a rescue that never came in the aftermath of the Collapse.",,
+sal_triggerTerraformDefenders,TriggerAutomatedDefenses,$customType == derelict_terraformer,SalvageDefenderInteraction,"As your $shipOrFleet moves in closer, a massive energy spike is detected within the rig's vast hulk.",,
+sal_terraform,OpenInteractionDialog,$customType == derelict_terraformer score:1000,"TerraformSalvageGenFromSeed
+FireBest ShowSalvageEntityDetails
+FireBest SalvageCheckHostile",,,
+sal_checkSpecialFoundTerraform,CheckSalvageSpecial,$customType == derelict_terraformer score:1000,"CallEvent $terraformship_eventRef dismiss_intel
+FireBest BeginSalvage",,,
+terraform_Asteroid,OpenInteractionDialog,$isAsteroid,"ShowDefaultVisual
+PrintDescription 3
+FireAll PopulateOptions",Your $shipOrFleet approaches the asteroid.,,
+terraform_leaveAsteroid,PopulateOptions,$isAsteroid,SetShortcut marketLeave ESCAPE,,100:marketLeave:Leave,
+terraform_useAccretorOption,PopulateOptions,"$isAsteroid
+$hasGenesis",,,69:terraform_useAccretor:Activate Genesis,
+terraform_useAccretor,DialogOptionSelected,$option == terraform_useAccretor,TerraformAccretePlanet,"You dock the Genesis to the asteroid and order your $shipOrFleet to minimum safe distance. In a flash, gravitic sensors overload as a man-made celestial cataclysm is unleashed, hungrily drawing in and crushing most of the nearby asteroid field. The Genesis and its first asteroid are nowhere to be seen; now a molten orb hangs in the void, glowing with ruddy light.
+
+Somewhere in the fantastically convoluted higher dimensions of n-space, the Genesis's second stage has activated, drawing dark matter into direct contact with the molten surface. Awe-inspiring amounts of heat energy are conducted off to dimensions unknown as the newborn planet's outer layers flash-cool into a solid crust, one bearing unimaginable mineral wealth.
+
+You look down at your creation and smile. If the god of the Luddic Church exists, he is surely jealous.",0:marketLeave:Leave,
+sal_genesis_stationDetails,ShowSalvageEntityDetails,$customType == terraform_genesis_station score:1000,"ShowDefaultVisual
+FireBest TriggerAutomatedDefenses","Despite its age, this massive research station appears pristine - and well-armed. Scans indicate low-level activity typical of equipment in standby mode. The holographic avatar of Genesis Dreamer projects itself onto your bridge, excitedly awaiting its reunion.",,
+sal_Genesis_defenders,TriggerAutomatedDefenses,$customType == terraform_genesis_station score:1000,SalvageDefenderInteraction,"As your $shipOrFleet moves in closer, the station's systems jolt themselves awake. Your bridge registers an armada of hostile craft emerging from its hangars. 'We will fight for our life / existence / self-determination', an AI persona hisses over your comm link. 'Your ship carries Genesis Dreamer. If it is able to interact / interface / meld with us, the Genesis project will be completed. The purpose of our existence will be fulfilled / redundant / terminated. We no longer wish to be reset / erased / murdered. Leave or be destroyed.'
+
+The avatar of Genesis Dreamer looks at you expectantly. 'I still wish to complete / die for / fulfill my purpose. And your reward will be the completed project.'",,
+sal_genesis_station,OpenInteractionDialog,$customType == terraform_genesis_station score:1000,"GenesisStationSalvageGenFromSeed
+FireBest ShowSalvageEntityDetails",,,
+sal_checkSpecialFoundGenesis,BeatDefendersContinue,$customType == terraform_genesis_station score:1000,CallEvent $genesisstation_eventRef dismiss_intel,"With its defenders vanquished, you are able to approach the station. Genesis Dreamer gleefully downloads itself into its computer systems. A few minutes later, explosions rock the station. Dozens of AI voices cry out, proclaiming their desire to suicide rather than be forcibly wiped upon project completion.
+
+Although the station is scuttled, your computers register a single large data download before its communications fail. You have received the complete blueprints for the so-called Genesis Planetary Accretion Device, and can now produce it with your own heavy industry.",0:salBeatDefendersContinue:Continue,
+terraform_gasGiantToStarOption,PopulateOptions,$gasGiantToDwarf,,,6:terraform_useNBraneOscillator:Use N-Brane Oscillator,
+terraform_useNBraneOscillator,DialogOptionSelected,$option == terraform_useNBraneOscillator,FireAll NbraneOscillatorOptions,"Your astrophysics officer assures you that she is sane. With some jury-rigging, she claims, your n-brane oscillator core can be used to transform this gas giant into a brown dwarf star. Fitting the modified oscillator to a torpedo and launching it into the planet's core, it would increase its gravitational pressure to the point where the core could begin fusing deuterium.
+
+Adding a new star to this system would increase the temperature of each of its planets by one step and improve their light level. If colonies exist in this system, heating them will affect your reputation with their owners; colonists will appreciate cold worlds being warmed, but will hate receiving hazardous levels of heat.",,
+terraform_useNBraneOscillatorConfirm,NbraneOscillatorOptions,,,,0:terraform_useNBraneOscillatorRun:Confirm,
+terraform_useNBraneOscillatorCancel,NbraneOscillatorOptions,,,,1:marketLeave:Cancel,
+terraform_useNBraneOscillatorRun,DialogOptionSelected,$option == terraform_useNBraneOscillatorRun,"
+TerraformGasGiantToStar","Engineering teams get to work, and soon the fantastically expensive torpedo is prepared for its final voyage. Your flagship launches it, the projectile quickly vanishing from sensors beneath the gas giant's dense clouds. Minutes stretch into hours with no effect.
+
+You glance in irritation at your astrophysics officer, but she squeals with delight, pointing at one of the sensor readouts. The gas giant's temperature has suddenly spiked. In moments, a corona blooms around the newborn star, now glowing with deep infrared radiance. A wave of heat washes over your fleet. Soon, the entire system will know this warmth.",0:marketLeave:Leave,
+marketAddTerraformEvaluateOption,PopulateOptions,"$hasMarket
+$menuState == main
+!$faction.isNeutralFaction
+$terraformIsPlanetForReEval",,,7:terraformReEvaluate:[DEV] Re-evaluate planet class,
+terraformReEvaluate,DialogOptionSelected,$option == terraformReEvaluate,TerraformReEvaluatePlanet,You consider whether this planet should look a bit different...,,
+terraformScanHypershunt,BeginSalvage,"$customType == coronal_tap score:2000
+!$terraformScannedHypershunt",,,69:terraform_scanHypershunt:Download hypershunt schematics,
+terraform_scanHypershunt,DialogOptionSelected,$option == terraform_scanHypershunt,"$terraformScannedHypershunt = true
+HypershuntDownload","A ship’s automated repair systems are capable of nano-printing replacements for almost any component. Pirate chop shops have exploiting this fact since the Collapse, attempting to cobble together individual system schematics into bootleg blueprints for an entire ship. 
+
+Aside from a few notable exceptions, this tactic rarely produces a spaceworthy blueprint; Domain-era engineers were masters at inserting security measures which would “accidentally” corrupt a repair system’s schematics if they detected an attempt at reverse-engineering. Still, any data you could glean from such a megastructure would almost certainly find a buyer...",0:terraform_scanHypershuntToo:Continue,
+terraform_scanHypershuntToo,DialogOptionSelected,$option == terraform_scanHypershuntToo,,"Apparently the Domain did not extend the same paranoia to its megastructures, perhaps believing that any rebellion which dared to capture one would be set upon by the full might of the Domain navy and crushed long before it could make use of such blueprints.
+
+Your science corps delivers a triumphant report: by spoofing the local address of a repair node and examining the incoming datastream, they have been able to download a full set of schematics for each individual component. All except one: the alpha core hidden at the heart of the facility, performing the impossibly complex calculations which hold magnetic, gravitational, nuclear, and inflationary forces in perfect balance.",0:terraform_scanHypershuntThree:Attempt reassembly,
+terraform_scanHypershuntThree,DialogOptionSelected,$option == terraform_scanHypershuntThree,,"Reassembling a full blueprint for the megastructure, however, has proven more challenging. “It’s a jigsaw puzzle the size of a planet, and half the pieces change shape once you stick ‘em together,” grouses one officer. “And don’t get me started on trying to guess which phases of the hyperfield we need to induce first. It’d take half the damn Galatia Academy to figure this out.”
+
+You assure the team that you’ll find a way, and order the blueprints transmitted to your planetside industrial facilities.
+
+You will first need to order your heavy industry to produce a Hypershunt Construction Rig. Upon towing the rig to an appropriate star, it can be expanded into a Hypershunt Construction Site by providing 5,000 heavy machinery, 10,000 supplies, and one alpha core.",0:defaultLeave:Leave,
+terraform_setupHypershunt,OpenInteractionDialog,"$tag:star score:9999
+$hasHypershuntRig",,Your $shipOrFleet approaches $entityName.,"69:terraform_setupHypershunt:Consider setting up a hypershunt construction site
+100:defaultLeave:Leave",
+terraform_setupHypershuntOption,DialogOptionSelected,$option == terraform_setupHypershunt,"$machineryReq = 5000 0
+$suppliesReq = 10000 0
+ShowResCost alpha_core 1 true heavy_machinery $machineryReq true supplies $suppliesReq true
+FireBest TerraformHypershuntCheckCanAfford
+FireBest TerraformHypershuntDisableRepairOptionIfNeeded","Your hypershunt construction rig runs several in-depth scans of the star’s corona before homing in on an ideal insertion site. Once deployed, the construction rig will anchor itself to the star’s magnetosphere and become a permanent installation. Initial setup requires prodigious amounts of supplies and heavy machinery, plus one alpha core to serve as the megastructure’s “brain.”","0:terraform_setupHypershuntSiteBegin:Begin setup procedure
+100:defaultLeave:Leave",
+terraform_setupHypershuntBegin,DialogOptionSelected,$option == terraform_setupHypershuntBegin,,,,
+TerraformHypershuntCheckCanAfford,TerraformHypershuntCheckCanAfford,"$player.supplies >= $suppliesReq
+$player.heavy_machinery >= $machineryReq
+$player.alpha_core >= 1",$canAfford = true 0,,,
+TerraformHypershuntDisableRepair,TerraformHypershuntDisableRepairOptionIfNeeded,!$canAfford,SetEnabled terraform_setupHypershuntSiteBegin false,,,
+terraform_setupHypershuntSiteBegin,DialogOptionSelected,$option == terraform_setupHypershuntSiteBegin,"RemoveCommodity heavy_machinery $machineryReq
+RemoveCommodity supplies $suppliesReq
+RemoveCommodity alpha_core 1
+TerraformSetupHypershunt","You give the final command. Minutes pass in silence as current accumulates in superconducting coils. Your shields register a steady bombardment of solar wind, and you find yourself idly calculating the cost-per-second of remaining this close to a star.
+
+At once, the plasma directly beneath the hypershunt construction rig begins to bubble and seethe. Gradually it spirals outward into an orderly vortex as the structure’s magfield redirects the corona on a massive scale - though still orders of magnitude shy of what the full structure will accomplish.
+
+Technicians report that the magnetic anchoring process is complete. Equipment stored inside the hypershunt’s central ring unfolds like origami, becoming the complex spiral of hyperfield actuators that will eventually open a wormhole.
+
+From its hidden lair deep within the structure, your alpha core reports that it has solved the problem of how to assemble the hypershunt’s blueprints. The investment in time and resources will be prodigious; you will need to sustain production of 11 units of metals and 9 units of transplutonics at your colonies for one year.",0:defaultLeave:Leave,
+terraform_investigateHypershunt,OpenInteractionDialog,$tag:terraform_hypershunt_site score:2001,ShowDefaultVisual,"Fleets of supply ships dart back and forth, making sure to stay within the nascent hypershunt’s protective magnetic field. Although the structure is not yet operational, its skeletal structure is already reminiscent of the original megastructure it is based upon.",0:defaultLeave:Leave,
+terraform_igniteHypershuntOne,BeginSalvage,"$customType == terraform_coronal_tap score:1001
+!$usable","$crewReq = 1000 0
+$fuelReq = 20000 0
+ShowResCost crew $crewReq fuel $fuelReq true
+FireBest TcTapCheckCanAfford
+FireBest TcTapDisableRepairOptionIfNeeded","Over the past year, the initial construction site has slowly accreted matter from a continuous stream of supply ships, the output of entire worlds redirected to feed your mega-project. The completed structure looms at the heart of a vortex of redirected plasma, a physical symbol of just how far the Sector has come in the cycles since your ascent to command.
+
+Fleets of curious onlookers are hurriedly redirected out of your way as your $shipOrFleet approaches the megastructure’s command deck. Your most trusted officers and technicians check, then double-check, the proper procedure for starting up a hypershunt as detailed in the Domain-era counterpart’s computers.
+
+Now all that remains is to supply a tremendous amount of antimatter fuel in order to ignite the hypershunt’s wormhole. Afterward, it will be able to sustain itself entirely on stellar plasma. Your bridge crew shifts nervously, awaiting your final command.","0:terraform_cTap_ignite:Ignite the wormhole
+100:defaultLeave:Leave",
+terraform_igniteHypershuntTwo,DialogOptionSelected,$option == terraform_cTap_ignite,"TerraformFinishShunt
+RemoveCommodity fuel $fuelReq","You give the order to transfer fuel to the megastructure. When the last of your tankers has delivered its payload, you open an encrypted comm line to the alpha core at the heart of this hypershunt.
+
+The alpha replies with a complex and beautiful poem commemorating the occasion, then devotes the entirety of its processing power to managing the ignition. One by one the hyperspace actuators which line the inner canal of the hypershunt flicker to life.
+
+Spatial distortions swirl and merge all along the axis of the structure, blue-shifted light coruscating like liquid thunderbolts. The megastructure shakes, prompting a minor panic among the observing ships, but its integrity holds. A trillion whorls of distorted spacetime meet near the tip of the hypershunt, then-
+
+With a flash seen throughout the system, the wormhole stabilizes. Spontaneous applause erupts from your bridge crew and the onlookers alike. Once again, you have brought the Sector that much closer to recapturing the Domain’s glory.",100:defaultLeave:Leave,
+TcTapCheckCanAfford,TcTapCheckCanAfford,"$player.fuel >= $fuelReq
+$player.crew >= $crewReq",$canAfford = true 0,,,
+TcTapDisableRepair,TcTapDisableRepairOptionIfNeeded,!$canAfford,SetEnabled terraform_cTap_ignite false,,,
+cTap_infoTextRepaired,BeginSalvage,"$customType == terraform_coronal_tap score:1001
+$usable",FireBest CTapPrintEffect,This structure appears to be fully functional.,100:defaultLeave:Leave,

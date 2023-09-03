@@ -1,0 +1,11 @@
+{
+    "displayName": "Standard",
+    "fluxCapacitors": 5,
+    "fluxVents": 5,
+    "goalVariant": true,
+    "hullId": "terraform_hypershunt",
+    "hullMods": [],
+    "permaMods": [],
+    "variantId": "terraform_hypershunt_Standard",
+    "weaponGroups": []
+}
