@@ -41,7 +41,7 @@ public class TerraformAccretePlanet extends BaseCommandPlugin
 				roidsToRemove.add(roid);
 		}
 		for(CampaignTerrainAPI terr : loc.getTerrainCopy())
-		{/*
+		{
 			if((terr.getClass()==AsteroidFieldTerrainPlugin.class && terr.getOrbitFocus() == entity.getOrbitFocus() && terr.getCircularOrbitRadius()/entity.getCircularOrbitRadius() < 1.1f && terr.getCircularOrbitRadius()/entity.getCircularOrbitRadius() > 0.9f))
 			{
 				loc.removeEntity(terr);
@@ -50,8 +50,7 @@ public class TerraformAccretePlanet extends BaseCommandPlugin
 			else if(terr.getType().equals("asteroid_belt") && terr.getLocation().x==entity.getOrbitFocus().getLocation().x)
 			{
 				loc.removeEntity(terr);
-			}
-		*/
+			}		
 		}
 		if(wasBelt)
 		{
