@@ -27,7 +27,7 @@ public class TerraformingUtilities {
 		PlanetGenDataSpec genData=(PlanetGenDataSpec)Global.getSettings().getSpec(PlanetGenDataSpec.class, planetType, false);
 		String planetCat = genData.getCategory();
 		
-		if(!planet.getPlanetEntity().isStar() && !planet.getPlanetEntity().isGasGiant() && !planet.hasCondition("habitable") && !planet.hasCondition("very_cold") && !planet.hasCondition("very_hot") && !planet.hasCondition("no_atmosphere") && !planet.hasCondition("thin_atmosphere") && !planet.hasCondition("toxic_atmosphere") && !planet.hasCondition("irradiated") && !planet.hasCondition("dark"))
+		if(!planet.getPlanetEntity().isStar() && !planet.getPlanetEntity().isGasGiant() && !planet.hasCondition("habitable") && !planet.hasCondition("very_cold") && !planet.hasCondition("very_hot") && !planet.hasCondition("no_atmosphere") && !planet.hasCondition("thin_atmosphere") && !planet.hasCondition("toxic_atmosphere") && !planet.hasCondition("irradiated") && !planet.hasCondition("dark") && !planetType.equals("Volcanic") && !planetType.equals("Cryovolcanic") &&  !planetType.equals("rocky_ice") && !planetType.equals("frozen") && !planetType.equals("Toxic") && !planetType.equals("Barren") && !planetType.equals("Barren-desert"))
 		{
 			planet.addCondition("habitable");
 		}
