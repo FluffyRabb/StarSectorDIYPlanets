@@ -46,6 +46,7 @@ public class TerraformShipBarEvent extends BaseGetCommodityBarEvent {
 			if (system.hasTag(Tags.THEME_CORE_POPULATED)) continue;
 			if (system.hasTag(Tags.THEME_REMNANT_MAIN)) continue;
 			if (system.hasTag(Tags.THEME_REMNANT_RESURGENT)) continue;
+			if (system.isNebula()) continue;
 			
 			float sinceVisit = Global.getSector().getClock().getElapsedDaysSince(system.getLastPlayerVisitTimestamp());
 			if (sinceVisit < 60) continue;
