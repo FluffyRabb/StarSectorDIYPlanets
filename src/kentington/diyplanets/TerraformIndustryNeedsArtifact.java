@@ -101,7 +101,7 @@ public class TerraformIndustryNeedsArtifact extends BaseIndustry{
 	
 	@Override
 	protected void applyAlphaCoreSupplyAndDemandModifiers() {
-		demandReduction.modifyFlat(getModId(0), DEMAND_REDUCTION, Commodities.ALPHA_CORE);
+		demandReduction.modifyFlat(getModId(0), DEMAND_REDUCTION, "Alpha Core");
 	}
 	
 	@Override
