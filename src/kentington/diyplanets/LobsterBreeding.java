@@ -1,8 +1,6 @@
 package kentington.diyplanets;
 
 import java.awt.Color;
-import java.util.HashSet;
-import java.util.Set;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
@@ -14,7 +12,7 @@ import com.fs.starfarer.api.impl.campaign.DebugFlags;
 import com.fs.starfarer.api.impl.campaign.econ.ResourceDepositsCondition;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
-import com.fs.starfarer.api.impl.campaign.ids.StarTypes;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -34,7 +32,7 @@ public class LobsterBreeding extends BaseIndustry {
 		
 		if (!super.isAvailableToBuild()) return false;
 		
-		boolean canAquaculture = market.getPlanetEntity() != null && market.hasCondition("water_surface");
+		boolean canAquaculture = market.getPlanetEntity() != null && market.hasCondition(Conditions.WATER_SURFACE);
 		if(!canAquaculture) return false;
 		
 		for (MarketConditionAPI mc : market.getConditions()) {
@@ -163,7 +161,7 @@ public class LobsterBreeding extends BaseIndustry {
 			reapply();
 			building=false;
 		} else {
-			market.addCondition("volturnian_lobster_pens");
+			market.addCondition(Conditions.VOLTURNIAN_LOBSTER_PENS);
 			market.removeIndustry("lobsterbreeding", null, false);
 			if (market.isPlayerOwned()) {
 				MessageIntel intel = new MessageIntel(getCurrentName() + " at " + market.getName(), Misc.getBasePlayerColor());

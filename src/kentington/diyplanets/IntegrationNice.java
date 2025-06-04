@@ -12,6 +12,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI.MarketInteractionMode;
 import com.fs.starfarer.api.impl.campaign.DebugFlags;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
@@ -38,7 +39,7 @@ public class IntegrationNice extends BaseIndustry implements MarketImmigrationMo
 	public boolean isAvailableToBuild() {
 		if (!super.isAvailableToBuild()) return false;
 		
-		return market.hasCondition("decivilized_subpop") && !market.hasIndustry("subjugationcorps") && (market.getConstructionQueue() == null || !market.getConstructionQueue().hasItem("subjugationcorps"));
+		return market.hasCondition(Conditions.DECIVILIZED_SUBPOP) && !market.hasIndustry("subjugationcorps") && (market.getConstructionQueue() == null || !market.getConstructionQueue().hasItem("subjugationcorps"));
 	}
 
 	@Override
@@ -160,7 +161,7 @@ public class IntegrationNice extends BaseIndustry implements MarketImmigrationMo
 			reapply();
 			building=false;
 		} else {
-			market.removeCondition("decivilized_subpop");
+			market.removeCondition(Conditions.DECIVILIZED_SUBPOP);
 			market.getHazard().unmodifyFlat("Integration");
 			market.getStability().unmodifyFlat("Integration");
 			market.removeIndustry("integrationcorps", null, false);

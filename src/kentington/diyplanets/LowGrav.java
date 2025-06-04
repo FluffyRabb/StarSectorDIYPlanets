@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class LowGrav extends TerraformIndustryAddHazard {
 	
@@ -11,12 +12,12 @@ public class LowGrav extends TerraformIndustryAddHazard {
 	
 		hazardAmount=0f;
 	
-		hazard="low_gravity";
+		hazard=Conditions.LOW_GRAVITY;
 		tag="LowGravity";
 		artifactRequired="gravity_oscillator";
 		oppositeIndustry="gravitydecrease";
 		allowHabitable=true;
-		hazardAlsoRemoved="high_gravity";
+		hazardAlsoRemoved=Conditions.HIGH_GRAVITY;
 	}
 	
 	@Override

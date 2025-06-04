@@ -18,6 +18,7 @@ import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class IntegrationNasty extends BaseIndustry implements MarketImmigrationModifier {
 
@@ -38,7 +39,7 @@ public class IntegrationNasty extends BaseIndustry implements MarketImmigrationM
 	public boolean isAvailableToBuild() {
 		if (!super.isAvailableToBuild()) return false;
 		
-		return market.hasCondition("decivilized_subpop") && !market.hasIndustry("integrationcorps") && (market.getConstructionQueue() == null || !market.getConstructionQueue().hasItem("integrationcorps"));
+		return market.hasCondition(Conditions.DECIVILIZED_SUBPOP) && !market.hasIndustry("integrationcorps") && (market.getConstructionQueue() == null || !market.getConstructionQueue().hasItem("integrationcorps"));
 	}
 
 	@Override
@@ -160,7 +161,7 @@ public class IntegrationNasty extends BaseIndustry implements MarketImmigrationM
 			reapply();
 			building=false;
 		} else {
-			market.removeCondition("decivilized_subpop");
+			market.removeCondition(Conditions.DECIVILIZED);
 			market.getHazard().unmodifyFlat("Integration");
 			market.getStability().unmodifyFlat("Integration");
 			market.removeIndustry("subjugationcorps", null, false);

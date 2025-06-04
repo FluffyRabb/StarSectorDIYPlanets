@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class SolarReflector extends TerraformIndustryNeedsArtifact {
 	
@@ -11,10 +12,10 @@ public class SolarReflector extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.25f;
 	
-		hazard="cold";
+		hazard=Conditions.COLD;
 		tag="SolarReflector";
 		artifactRequired="solar_reflector";
-		disqualifyCondition="dark";
+		disqualifyCondition=Conditions.DARK;
 		stationType = "stellar_mirror";
 		stationName = "Stellar Mirror";
 	}

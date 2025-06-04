@@ -229,7 +229,7 @@ public class WaterReceiver extends BaseIndustry {
 					if(market!=null && market.hasIndustry("waterlauncher") && !market.getIndustry("waterlauncher").isBuilding() && !market.getIndustry("waterlauncher").isDisrupted())
 					{
 						watermult++;
-						if(market.getIndustry("waterlauncher").getAICoreId() != null && market.getIndustry("waterlauncher").getAICoreId().equals("alpha_core"))
+						if(market.getIndustry("waterlauncher").getAICoreId() != null && market.getIndustry("waterlauncher").getAICoreId().equals(Commodities.ALPHA_CORE))
 							watermult++;
 					}
 				}

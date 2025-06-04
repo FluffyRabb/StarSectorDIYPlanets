@@ -4,9 +4,10 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetSpecAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.procgen.PlanetGenDataSpec;
-import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.loading.specs.PlanetSpec;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Planets;
 
 public class TerraformingUtilities {
 
@@ -27,23 +28,23 @@ public class TerraformingUtilities {
 		PlanetGenDataSpec genData=(PlanetGenDataSpec)Global.getSettings().getSpec(PlanetGenDataSpec.class, planetType, false);
 		String planetCat = genData.getCategory();
 		
-		if(!planet.getPlanetEntity().isStar() && !planet.getPlanetEntity().isGasGiant() && !planet.hasCondition("habitable") && !planet.hasCondition("very_cold") && !planet.hasCondition("very_hot") && !planet.hasCondition("no_atmosphere") && !planet.hasCondition("thin_atmosphere") && !planet.hasCondition("toxic_atmosphere") && !planet.hasCondition("irradiated") && !planet.hasCondition("dark") && !planetType.equals("Volcanic") && !planetType.equals("Cryovolcanic") &&  !planetType.equals("rocky_ice") && !planetType.equals("frozen") && !planetType.equals("Toxic") && !planetType.equals("Barren") && !planetType.equals("Barren-desert"))
+		if(!planet.getPlanetEntity().isStar() && !planet.getPlanetEntity().isGasGiant() && !planet.hasCondition(Conditions.HABITABLE) && !planet.hasCondition(Conditions.VERY_COLD) && !planet.hasCondition(Conditions.VERY_HOT) && !planet.hasCondition(Conditions.NO_ATMOSPHERE) && !planet.hasCondition(Conditions.THIN_ATMOSPHERE) && !planet.hasCondition(Conditions.TOXIC_ATMOSPHERE) && !planet.hasCondition(Conditions.IRRADIATED) && !planet.hasCondition(Conditions.DARK) && !planetType.equals("Volcanic") && !planetType.equals("Cryovolcanic") &&  !planetType.equals("rocky_ice") && !planetType.equals("frozen") && !planetType.equals("Toxic") && !planetType.equals("Barren") && !planetType.equals("Barren-desert"))
 		{
-			planet.addCondition("habitable");
+			planet.addCondition(Conditions.HABITABLE);
 		}
 		
-		if(planetCat.equals("cat_irradiated") && !planet.hasCondition("irradiated"))
+		if((planetCat.equals("cat_irradiated") && !planet.hasCondition(Conditions.IRRADIATED)) || planetCat.equals("cat_lava") && !planet.hasCondition(Conditions.VERY_HOT))
 		{
-			if(planet.hasCondition("ore_rich") || planet.hasCondition("ore_ultrarich") || planet.hasCondition("rare_ore_rich") || planet.hasCondition("rare_ore_ultrarich"))
+			if(planet.hasCondition(Conditions.ORE_RICH) || planet.hasCondition(Conditions.ORE_ULTRARICH) || planet.hasCondition(Conditions.RARE_ORE_RICH) || planet.hasCondition(Conditions.RARE_ORE_ULTRARICH))
 			{
 				int which = Misc.random.nextInt(3);
 				switch(which)
 				{
 					case 0:
-						planetType=ChangePlanetClass(planet,"barren_castiron");
+						planetType=ChangePlanetClass(planet, Planets.BARREN_CASTIRON);
 						break;
 					default:
-						planetType=ChangePlanetClass(planet,"rocky_metallic");
+						planetType=ChangePlanetClass(planet, Planets.ROCKY_METALLIC);
 						break;
 				}
 			}
@@ -53,155 +54,122 @@ public class TerraformingUtilities {
 				switch(which)
 				{
 					case 0:
-						planetType=ChangePlanetClass(planet,"barren");
+						planetType=ChangePlanetClass(planet, Planets.BARREN);
 						break;
 					case 1:
-						planetType=ChangePlanetClass(planet,"barren2");
+						planetType=ChangePlanetClass(planet, Planets.BARREN2);
 						break;
 					default:
-						planetType=ChangePlanetClass(planet,"barren3");
+						planetType=ChangePlanetClass(planet, Planets.BARREN3);
 						break;
 				}
 			}
 			planetCat="cat_barren";
 		}
-		if(planetCat.equals("cat_lava") && !planet.hasCondition("very_hot"))
+		if(planetCat.equals("cat_cryovolcanic") && !planet.hasCondition(Conditions.TECTONIC_ACTIVITY) && !planet.hasCondition(Conditions.EXTREME_TECTONIC_ACTIVITY))
 		{
-			if(planet.hasCondition("ore_rich") || planet.hasCondition("ore_ultrarich") || planet.hasCondition("rare_ore_rich") || planet.hasCondition("rare_ore_ultrarich"))
-			{
-				int which = Misc.random.nextInt(3);
-				switch(which)
-				{
-					case 0:
-						planetType=ChangePlanetClass(planet,"barren_castiron");
-						break;
-					default:
-						planetType=ChangePlanetClass(planet,"rocky_metallic");
-						break;
-				}
-			}
-			else
-			{
-				int which = Misc.random.nextInt(3);
-				switch(which)
-				{
-					case 0:
-						planetType=ChangePlanetClass(planet,"barren");
-						break;
-					case 1:
-						planetType=ChangePlanetClass(planet,"barren2");
-						break;
-					default:
-						planetType=ChangePlanetClass(planet,"barren3");
-						break;
-				}
-			}
-			planetCat="cat_barren";
-		}
-		if(planetCat.equals("cat_cryovolcanic") && !planet.hasCondition("tectonic_activity") && !planet.hasCondition("extreme_tectonic_activity"))
-		{
-			if(planet.hasCondition("very_cold"))
+			if(planet.hasCondition(Conditions.VERY_COLD))
 			{
 				int which = Misc.random.nextInt(4);
 				switch(which)
 				{
 					case 0:
-						planetType=ChangePlanetClass(planet,"frozen");
+						planetType=ChangePlanetClass(planet, Planets.FROZEN);
 						break;
 					case 1:
-						planetType=ChangePlanetClass(planet,"frozen1");
+						planetType=ChangePlanetClass(planet, Planets.FROZEN1);
 						break;
 					case 2:
-						planetType=ChangePlanetClass(planet,"frozen2");
+						planetType=ChangePlanetClass(planet, Planets.FROZEN2);
 						break;
 					default:
-						planetType=ChangePlanetClass(planet,"frozen3");
+						planetType=ChangePlanetClass(planet, Planets.FROZEN3);
 						break;
 				}
 				planetCat="cat_frozen";
 			}
-			else if(planet.hasCondition("cold"))
+			else if(planet.hasCondition(Conditions.COLD))
 			{
-				planetType=ChangePlanetClass(planet,"rocky_ice");
+				planetType=ChangePlanetClass(planet, Planets.ROCKY_ICE);
 				planetCat="cat_frozen";
 			}
 			else
 			{
-				planetType=ChangePlanetClass(planet,"water");
+				planetType=ChangePlanetClass(planet, Planets.PLANET_WATER);
 				planetCat="cat_hab3";
 			}
 		}
-		if(planetCat.equals("cat_frozen") && !planet.hasCondition("very_cold") && !planet.hasCondition("cold"))
+		if(planetCat.equals("cat_frozen") && !planet.hasCondition(Conditions.VERY_COLD) && !planet.hasCondition(Conditions.COLD))
 		{
-			planetType=ChangePlanetClass(planet,"water");
+			planetType=ChangePlanetClass(planet, Planets.PLANET_WATER);
 			planetCat="cat_hab3";
 		}
-		if(planetCat.equals("cat_toxic") && !planet.hasCondition("toxic_atmosphere"))
+		if(planetCat.equals("cat_toxic") && !planet.hasCondition(Conditions.TOXIC_ATMOSPHERE))
 		{
 			int which = Misc.random.nextInt(3);
 			switch(which)
 			{
 				case 0:
-					planetType=ChangePlanetClass(planet,"barren");
+					planetType=ChangePlanetClass(planet, Planets.BARREN);
 					break;
 				case 1:
-					planetType=ChangePlanetClass(planet,"barren2");
+					planetType=ChangePlanetClass(planet, Planets.BARREN2);
 					break;
 				default:
-					planetType=ChangePlanetClass(planet,"barren3");
+					planetType=ChangePlanetClass(planet, Planets.BARREN3);
 					break;
 			}
 			planetCat="cat_barren";
 		}
-		if(planetType.equals("rocky_ice") && !planet.hasCondition("cold") && !planet.hasCondition("very_cold"))
+		if(planetType.equals(Planets.ROCKY_ICE) && !planet.hasCondition(Conditions.COLD) && !planet.hasCondition(Conditions.VERY_COLD))
 		{
-			planetType=ChangePlanetClass(planet,"water");
+			planetType=ChangePlanetClass(planet, Planets.PLANET_WATER);
 			planetCat="cat_hab3";
 		}
-		if(planetCat.equals("cat_barren") && !planet.hasCondition("no_atmosphere") && !planet.hasCondition("thin_atmosphere") && !planet.hasCondition("toxic_atmosphere"))
+		if(planetCat.equals("cat_barren") && !planet.hasCondition(Conditions.NO_ATMOSPHERE) && !planet.hasCondition(Conditions.THIN_ATMOSPHERE) && !planet.hasCondition(Conditions.TOXIC_ATMOSPHERE))
 		{
-			planetType=ChangePlanetClass(planet,"barren-desert");
+			planetType=ChangePlanetClass(planet, Planets.BARREN_DESERT);
 			planetCat="cat_hab1";
 		}
-		if(planetCat.equals("cat_hab1") && planet.hasCondition("habitable"))
+		if(planetCat.equals("cat_hab1") && planet.hasCondition(Conditions.HABITABLE))
 		{
-			planetType=ChangePlanetClass(planet,"desert");
+			planetType=ChangePlanetClass(planet, Planets.DESERT);
 			AddOrImproveFarmland(planet);
 			planetCat="cat_hab2";
 		}
-		if(planetCat.equals("cat_hab2") && planet.hasCondition("cold") && planet.hasCondition("hydrated"))
+		if(planetCat.equals("cat_hab2") && planet.hasCondition(Conditions.COLD) && planet.hasCondition("hydrated"))
 		{
-			planetType=ChangePlanetClass(planet,"tundra");
+			planetType=ChangePlanetClass(planet, Planets.TUNDRA);
 			AddOrImproveFarmland(planet);
 			planet.removeCondition("hydrated");
 			planetCat="cat_hab3";
 		}
-		if(planetCat.equals("cat_hab2") && planet.hasCondition("hot") && planet.hasCondition("hydrated"))
+		if(planetCat.equals("cat_hab2") && planet.hasCondition(Conditions.HOT) && planet.hasCondition("hydrated"))
 		{
 			planetType=ChangePlanetClass(planet,"jungle");
 			AddOrImproveFarmland(planet);
 			planet.removeCondition("hydrated");
 			planetCat="cat_hab3";
 		}
-		if(((planetCat.equals("cat_hab2")&& planet.hasCondition("hydrated")) || (planetCat.equals("cat_hab3") && !planetType.equals("terran-eccentric") && !planetType.equals("water"))) && (planet.hasCondition("dense_atmosphere") || planet.hasCondition("extreme_weather") || planet.hasCondition("irradiated") || planet.hasCondition("poor_light") || planet.hasCondition("dark")))
+		if(((planetCat.equals("cat_hab2")&& planet.hasCondition("hydrated")) || (planetCat.equals("cat_hab3") && !planetType.equals("terran-eccentric") && !planetType.equals(Planets.PLANET_WATER))) && (planet.hasCondition(Conditions.DENSE_ATMOSPHERE) || planet.hasCondition(Conditions.EXTREME_WEATHER) || planet.hasCondition(Conditions.IRRADIATED) || planet.hasCondition(Conditions.POOR_LIGHT) || planet.hasCondition(Conditions.DARK)))
 		{
-			planetType=ChangePlanetClass(planet,"terran-eccentric");
+			planetType=ChangePlanetClass(planet, Planets.PLANET_TERRAN_ECCENTRIC);
 			AddOrImproveFarmland(planet);
 			if(planet.hasCondition("hydrated"))
 				planet.removeCondition("hydrated");
 			planetCat="cat_hab3";
 		}
-		if(planet.hasCondition("habitable") && !planetType.equals("terran") && !planetType.equals("water") && ((planetCat.equals("cat_hab2") && planet.hasCondition("hydrated")) || planetCat.equals("cat_hab3")) && !(planet.hasCondition("dense_atmosphere") || planet.hasCondition("extreme_weather") || planet.hasCondition("irradiated") || planet.hasCondition("poor_light") || planet.hasCondition("dark") || planet.hasCondition("hot") || planet.hasCondition("very_hot") || planet.hasCondition("cold") || planet.hasCondition("very_cold")))
+		if(planet.hasCondition(Conditions.HABITABLE) && !planetType.equals(Planets.PLANET_TERRAN) && !planetType.equals(Planets.PLANET_WATER) && ((planetCat.equals("cat_hab2") && planet.hasCondition("hydrated")) || planetCat.equals("cat_hab3")) && !(planet.hasCondition(Conditions.DENSE_ATMOSPHERE) || planet.hasCondition(Conditions.EXTREME_WEATHER) || planet.hasCondition(Conditions.IRRADIATED) || planet.hasCondition(Conditions.POOR_LIGHT) || planet.hasCondition(Conditions.DARK) || planet.hasCondition(Conditions.HOT) || planet.hasCondition(Conditions.VERY_HOT) || planet.hasCondition(Conditions.COLD) || planet.hasCondition((Conditions.VERY_COLD))))
 		{
-			planetType=ChangePlanetClass(planet,"terran");
+			planetType=ChangePlanetClass(planet, Planets.PLANET_TERRAN);
 			AddOrImproveFarmland(planet);
 			if(planet.hasCondition("hydrated"))
 				planet.removeCondition("hydrated");
 			planetCat="cat_hab4";
 		}
 		
-		if(planetType.equals("water") && !planet.hasCondition("water_surface"))
-			planet.addCondition("water_surface");
+		if(planetType.equals(Planets.PLANET_WATER) && !planet.hasCondition(Conditions.WATER_SURFACE))
+			planet.addCondition(Conditions.WATER_SURFACE);
 	}
 	
 	public static String ChangePlanetClass(MarketAPI planet, String newPlanetType)
@@ -236,35 +204,35 @@ public class TerraformingUtilities {
 	
 	public static void AddOrImproveFarmland(MarketAPI planet)
 	{
-		if(planet.hasCondition("farmland_rich"))
+		if(planet.hasCondition(Conditions.FARMLAND_RICH))
 		{
-			planet.removeCondition("farmland_rich");
-			planet.addCondition("farmland_bountiful");
-			planet.getFirstCondition("farmland_bountiful").setSurveyed(true);
+			planet.removeCondition(Conditions.FARMLAND_RICH);
+			planet.addCondition(Conditions.FARMLAND_BOUNTIFUL);
+			planet.getFirstCondition(Conditions.FARMLAND_BOUNTIFUL).setSurveyed(true);
 		}
-		else if(planet.hasCondition("farmland_adequate"))
+		else if(planet.hasCondition(Conditions.FARMLAND_ADEQUATE))
 		{
-			planet.removeCondition("farmland_adequate");
-			planet.addCondition("farmland_rich");
-			planet.getFirstCondition("farmland_rich").setSurveyed(true);
+			planet.removeCondition(Conditions.FARMLAND_ADEQUATE);
+			planet.addCondition(Conditions.FARMLAND_RICH);
+			planet.getFirstCondition(Conditions.FARMLAND_RICH).setSurveyed(true);
 		}
-		else if(planet.hasCondition("farmland_poor"))
+		else if(planet.hasCondition(Conditions.FARMLAND_POOR))
 		{
-			planet.removeCondition("farmland_poor");
-			planet.addCondition("farmland_adequate");
-			planet.getFirstCondition("farmland_adequate").setSurveyed(true);
+			planet.removeCondition(Conditions.FARMLAND_POOR);
+			planet.addCondition(Conditions.FARMLAND_ADEQUATE);
+			planet.getFirstCondition(Conditions.FARMLAND_ADEQUATE).setSurveyed(true);
 		}
-		else if(!planet.hasCondition("farmland_bountiful"))
+		else if(!planet.hasCondition(Conditions.FARMLAND_BOUNTIFUL))
 		{
-			if(planet.getPlanetEntity().getSpec().getPlanetType().equals("terran"))
+			if(planet.getPlanetEntity().getSpec().getPlanetType().equals(Planets.PLANET_TERRAN))
 			{
-				planet.addCondition("farmland_rich");
-				planet.getFirstCondition("farmland_rich").setSurveyed(true);
+				planet.addCondition(Conditions.FARMLAND_RICH);
+				planet.getFirstCondition(Conditions.FARMLAND_RICH).setSurveyed(true);
 			}
 			else
 			{
-				planet.addCondition("farmland_poor");
-				planet.getFirstCondition("farmland_poor").setSurveyed(true);
+				planet.addCondition(Conditions.FARMLAND_POOR);
+				planet.getFirstCondition(Conditions.FARMLAND_POOR).setSurveyed(true);
 			}
 		}
 	}

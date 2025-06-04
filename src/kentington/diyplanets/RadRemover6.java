@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class RadRemover6 extends TerraformIndustryNeedsArtifact {
 	
@@ -11,7 +12,7 @@ public class RadRemover6 extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0f;
 	
-		hazard="rare_ore_ultrarich";
+		hazard=Conditions.RARE_ORE_ULTRARICH;
 		tag="RadRemover";
 		artifactRequired="rad_remover";
 		requiresTerran = true;

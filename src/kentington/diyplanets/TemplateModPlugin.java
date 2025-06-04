@@ -1,7 +1,6 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.BaseModPlugin;
-import com.fs.starfarer.api.Global;
 
 public class TemplateModPlugin extends BaseModPlugin {
     @Override

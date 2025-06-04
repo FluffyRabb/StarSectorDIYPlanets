@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class AtmoPump extends TerraformIndustryNeedsArtifact {
 
@@ -11,7 +12,7 @@ public class AtmoPump extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.25f;
 	
-		hazard="thin_atmosphere";
+		hazard=Conditions.THIN_ATMOSPHERE;
 		tag="AtmoPump";
 		artifactRequired="atmo_sublimator";
 	}

@@ -14,6 +14,7 @@ import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class EnvironmentalAgency extends BaseIndustry {
 
@@ -32,7 +33,7 @@ public class EnvironmentalAgency extends BaseIndustry {
 	public boolean isAvailableToBuild() {
 		if (!super.isAvailableToBuild()) return false;
 		
-		return market.hasCondition("pollution");
+		return market.hasCondition(Conditions.POLLUTION);
 	}
 
 	@Override
@@ -154,7 +155,7 @@ public class EnvironmentalAgency extends BaseIndustry {
 			reapply();
 			building=false;
 		} else {
-			market.removeCondition("pollution");
+			market.removeCondition(Conditions.POLLUTION);
 			market.getHazard().unmodifyFlat("EnvironmentalAgency");
 			market.removeIndustry("environmentalagency", null, false);
 			if (market.isPlayerOwned()) {

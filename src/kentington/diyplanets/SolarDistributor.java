@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class SolarDistributor extends TerraformIndustryNeedsArtifact {
 	
@@ -11,7 +12,7 @@ public class SolarDistributor extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.25f;
 	
-		hazard="poor_light";
+		hazard=Conditions.POOR_LIGHT;
 		tag="SolarDistributor";
 		artifactRequired="solar_reflector";
 		stationType = "stellar_shade";

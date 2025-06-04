@@ -17,6 +17,8 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI.MarketInteractionMode;
 import com.fs.starfarer.api.impl.campaign.DebugFlags;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -99,7 +101,7 @@ public class TerraformIndustryNeedsArtifact extends BaseIndustry{
 	
 	@Override
 	protected void applyAlphaCoreSupplyAndDemandModifiers() {
-		demandReduction.modifyFlat(getModId(0), DEMAND_REDUCTION, "Alpha core");
+		demandReduction.modifyFlat(getModId(0), DEMAND_REDUCTION, Commodities.ALPHA_CORE);
 	}
 	
 	@Override
@@ -252,7 +254,7 @@ public class TerraformIndustryNeedsArtifact extends BaseIndustry{
 			return false;
 		if(disqualifyCondition!=null && market.hasCondition(disqualifyCondition))
 			return false;
-		if(requiresTerran && (!market.hasCondition("habitable") || market.hasCondition("mild_climate")))
+		if(requiresTerran && (!market.hasCondition(Conditions.HABITABLE) || market.hasCondition(Conditions.MILD_CLIMATE)))
 			return false;
 		return market.hasCondition(hazard);
 	}
@@ -267,10 +269,10 @@ public class TerraformIndustryNeedsArtifact extends BaseIndustry{
 			building=false;
 			ensureStationEntityIsSetOrCreated();
 		} else {
-			if(!hazard.equals("habitable"))
+			if(!hazard.equals(Conditions.HABITABLE))
 				market.removeCondition(hazard);
 			else
-				market.addCondition("mild_climate");
+				market.addCondition(Conditions.MILD_CLIMATE);
 			market.getHazard().unmodifyFlat(tag);
 			artifact=null;
 			market.removeIndustry(this.id, null, false);
@@ -282,9 +284,9 @@ public class TerraformIndustryNeedsArtifact extends BaseIndustry{
 				Global.getSector().getCampaignUI().addMessage(intel, MessageClickAction.COLONY_INFO, market);
 			}
 			TerraformingUtilities.EvaluatePlanetClass(market);
-			if(reEvaluateMining && market.hasIndustry("mining"))
+			if(reEvaluateMining && market.hasIndustry(Industries.MINING))
 			{
-				((BaseIndustry)market.getIndustry("mining")).getSupply("rare_ore").getQuantity().unmodify();
+				((BaseIndustry)market.getIndustry(Industries.MINING)).getSupply(Commodities.RARE_ORE).getQuantity().unmodify();
 			}
 		}
 	}

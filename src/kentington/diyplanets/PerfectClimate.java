@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class PerfectClimate extends TerraformIndustryNeedsArtifact {
 	
@@ -11,7 +12,7 @@ public class PerfectClimate extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.0625f;
 	
-		hazard="habitable";
+		hazard=Conditions.HABITABLE;
 		tag="PerfectClimate";
 		artifactRequired="climate_sculptor";
 		requiresTerran = true;

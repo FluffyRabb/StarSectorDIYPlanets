@@ -149,7 +149,7 @@ public class TerraformSalvageGenFromSeed extends BaseCommandPlugin {
 						member.getRepairTracker().setCR(member.getRepairTracker().getMaxCR());
 					}
 					
-					PersonAPI person = OfficerManagerEvent.createOfficer(defenders.getFaction(), 20, SkillPickPreference.GENERIC, random);
+					PersonAPI person = OfficerManagerEvent.createOfficer(defenders.getFaction(), 20, SkillPickPreference.ANY, random);
 					defenders.setCommander(person);
 					defenders.getFlagship().setCaptain(person);
 			}
