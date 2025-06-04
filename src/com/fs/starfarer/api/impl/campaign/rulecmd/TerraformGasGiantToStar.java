@@ -15,10 +15,12 @@ import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.campaign.CargoAPI.CargoItemType;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.CoreReputationPlugin;
-import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Misc.Token;
 import com.fs.starfarer.campaign.CampaignPlanet;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.StarTypes;
+import com.fs.starfarer.api.impl.campaign.ids.Tags;
 
 import kentington.diyplanets.TerraformingUtilities;
 
@@ -31,8 +33,8 @@ public class TerraformGasGiantToStar extends BaseCommandPlugin
 		
 		SectorEntityToken entity = dialog.getInteractionTarget();
 		
-		TerraformingUtilities.ChangePlanetClass(entity.getMarket(), "star_browndwarf");
-		((CampaignPlanet)entity).addTag("star");
+		TerraformingUtilities.ChangePlanetClass(entity.getMarket(), StarTypes.BROWN_DWARF);
+		((CampaignPlanet)entity).addTag(Tags.STAR);
 		((CampaignPlanet)entity).getMarket().setSurveyLevel(SurveyLevel.FULL);
 		entity.getContainingLocation().addCorona(entity, 450, 1, 0, 1);
 		ArrayList<String> conditions = new ArrayList<String>();
@@ -47,42 +49,42 @@ public class TerraformGasGiantToStar extends BaseCommandPlugin
 		
 		for(PlanetAPI planet : entity.getContainingLocation().getPlanets())
 		{
-			if(planet.isStar() || planet.hasTag("star"))
+			if(planet.isStar() || planet.hasTag(Tags.STAR))
 				continue;
 			MarketAPI market = planet.getMarket();
 			if(market!=null)
 			{
 				float factionRepGain=0;
-				if(market.hasCondition("very_cold"))
+				if(market.hasCondition(Conditions.VERY_COLD))
 				{
-					market.removeCondition("very_cold");
-					market.addCondition("cold");
+					market.removeCondition(Conditions.VERY_COLD);
+					market.addCondition(Conditions.COLD);
 					factionRepGain=0.1f;
 				}
-				else if(market.hasCondition("cold"))
+				else if(market.hasCondition(Conditions.COLD))
 				{
-					market.removeCondition("cold");
+					market.removeCondition(Conditions.COLD);
 					factionRepGain=0.05f;
 				}
-				else if(market.hasCondition("hot"))
+				else if(market.hasCondition(Conditions.HOT))
 				{
-					market.removeCondition("hot");
-					market.addCondition("very_hot");
+					market.removeCondition(Conditions.HOT);
+					market.addCondition(Conditions.VERY_HOT);
 					factionRepGain=-0.1f;
 				}
-				else if(!market.hasCondition("very_hot"))
+				else if(!market.hasCondition(Conditions.VERY_HOT))
 				{
-					market.addCondition("hot");
+					market.addCondition(Conditions.HOT);
 					factionRepGain=-0.05f;
 				}
-				if(market.hasCondition("dark"))
+				if(market.hasCondition(Conditions.DARK))
 				{
-					market.removeCondition("dark");
-					market.addCondition("poor_light");
+					market.removeCondition(Conditions.DARK);
+					market.addCondition(Conditions.POOR_LIGHT);
 				}
-				else if(market.hasCondition("poor_light"))
+				else if(market.hasCondition(Conditions.POOR_LIGHT))
 				{
-					market.removeCondition("poor_light");
+					market.removeCondition(Conditions.POOR_LIGHT);
 				}
 				TerraformingUtilities.EvaluatePlanetClass(market);
 				if(market.getFaction()!=null && !market.getFaction().isNeutralFaction() && !market.getFaction().isPlayerFaction())

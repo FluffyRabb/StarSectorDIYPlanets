@@ -22,6 +22,8 @@ import com.fs.starfarer.campaign.RingBand;
 import com.fs.starfarer.campaign.StarSystem;
 import com.fs.starfarer.campaign.econ.Market;
 import com.fs.starfarer.loading.specs.PlanetSpec;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Planets;
 
 public class TerraformAccretePlanet extends BaseCommandPlugin
 {
@@ -67,12 +69,12 @@ public class TerraformAccretePlanet extends BaseCommandPlugin
 			loc.removeEntity(roid);
 		}
 		
-		CampaignPlanet newPlanet=new CampaignPlanet((String)null, Global.getSector().getPlayerPerson().getName().getFullName()+"'s Creation", "barren", 100f, 0f, 0f, (CampaignEntity) ((StarSystem)loc).getStar());
+		CampaignPlanet newPlanet=new CampaignPlanet((String)null, Global.getSector().getPlayerPerson().getName().getFullName()+"'s Creation", Planets.BARREN, 100f, 0f, 0f, (CampaignEntity) ((StarSystem)loc).getStar());
 		newPlanet.setOrbit(entity.getOrbit());
-		PlanetSpecAPI myspec = newPlanet.getSpec();
+		PlanetSpecAPI myspec = newPlanet.getSpec(); 
 		
 		for (PlanetSpecAPI spec : Global.getSettings().getAllPlanetSpecs()) {
-			if (spec.getPlanetType().equals("barren")) {
+			if (spec.getPlanetType().equals(Planets.BARREN)) {
 				myspec.setAtmosphereColor(spec.getAtmosphereColor());
 				myspec.setAtmosphereThickness(spec.getAtmosphereThickness());
 				myspec.setAtmosphereThicknessMin(spec.getAtmosphereThicknessMin());
@@ -86,7 +88,7 @@ public class TerraformAccretePlanet extends BaseCommandPlugin
 				myspec.setStarscapeIcon(spec.getStarscapeIcon());
 				myspec.setTexture(spec.getTexture());
 				myspec.setUseReverseLightForGlow(spec.isUseReverseLightForGlow());
-				((PlanetSpec)myspec).planetType="barren";
+				((PlanetSpec)myspec).planetType=Planets.BARREN;
 				((PlanetSpec)myspec).name=spec.getName();
 				((PlanetSpec)myspec).descriptionId=((PlanetSpec)spec).descriptionId;
 				break;
@@ -107,34 +109,34 @@ public class TerraformAccretePlanet extends BaseCommandPlugin
 		PlanetSpecAPI spec=((StarSystem)loc).getStar().getSpec();
 		if(spec.isBlackHole()||spec.isNebulaCenter()||spec.isPulsar())
 		{
-			newMarket.addCondition("cold");
-			newMarket.addCondition("dark");
+			newMarket.addCondition(Conditions.COLD);
+			newMarket.addCondition(Conditions.DARK);
 		}
 		else if(spec.getName().toLowerCase().contains("giant"))
 		{
-			newMarket.addCondition("hot");
+			newMarket.addCondition(Conditions.HOT);
 		}
-		newMarket.addCondition("no_atmosphere");
-		newMarket.addCondition("ore_ultrarich");
-		newMarket.addCondition("rare_ore_ultrarich");
+		newMarket.addCondition(Conditions.NO_ATMOSPHERE);
+		newMarket.addCondition(Conditions.ORE_ULTRARICH);
+		newMarket.addCondition(Conditions.RARE_ORE_ULTRARICH);
 		float num = (float)Math.random();
 		if(num>0.75f)
-			newMarket.addCondition("volatiles_plentiful");
+			newMarket.addCondition(Conditions.VOLATILES_PLENTIFUL);
 		else if(num>0.5f)
-			newMarket.addCondition("volatiles_abundant");
+			newMarket.addCondition(Conditions.VOLATILES_ABUNDANT);
 		else if(num>0.25f)
-			newMarket.addCondition("volatiles_diffuse");
+			newMarket.addCondition(Conditions.VOLATILES_DIFFUSE);
 		else
-			newMarket.addCondition("volatiles_trace");
+			newMarket.addCondition(Conditions.VOLATILES_TRACE);
 		num=(float)Math.random();
 		if(num>0.75f)
-			newMarket.addCondition("organics_plentiful");
+			newMarket.addCondition(Conditions.ORGANICS_PLENTIFUL);
 		else if(num>0.5f)
-			newMarket.addCondition("organics_abundant");
+			newMarket.addCondition(Conditions.ORGANICS_ABUNDANT);
 		else if(num>0.25f)
-			newMarket.addCondition("organics_common");
+			newMarket.addCondition(Conditions.ORGANICS_COMMON);
 		else
-			newMarket.addCondition("organics_trace");
+			newMarket.addCondition(Conditions.ORGANICS_TRACE);
 		
 		loc.removeEntity(entity);
 		
