@@ -24,7 +24,6 @@ import com.fs.starfarer.api.impl.campaign.ids.FleetTypes;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec.DropData;
-import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.FleetAdvanceScript;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageGenFromSeed.SDMParams;
@@ -186,6 +185,8 @@ public class GenesisStationSalvageGenFromSeed extends BaseCommandPlugin {
 						case FRIGATE:
 							drop.group = Drops.AI_CORES1;
 							break;
+						default:
+							break;
 						}
 						if (drop.group != null) {
 							dropRandom.add(drop);
@@ -194,8 +195,6 @@ public class GenesisStationSalvageGenFromSeed extends BaseCommandPlugin {
 				}
 				
 				float fuelMult = Global.getSector().getPlayerFleet().getStats().getDynamic().getValue(Stats.FUEL_SALVAGE_VALUE_MULT_FLEET);
-				//float fuel = salvage.getFuel();
-				//salvage.addFuel((int) Math.round(fuel * fuelMult));
 				
 				CargoAPI extra = SalvageEntity.generateSalvage(config.salvageRandom, valueMultFleet + valueModShips, 1f, 1f, fuelMult, dropValue, dropRandom);
 				for (CargoStackAPI stack : extra.getStacksCopy()) {

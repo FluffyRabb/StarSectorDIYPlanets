@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class TectonicEngine extends TerraformIndustryNeedsArtifact {
 
@@ -11,7 +12,7 @@ public class TectonicEngine extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.25f;
 	
-		hazard="tectonic_activity";
+		hazard=Conditions.TECTONIC_ACTIVITY;
 		tag="TectonicEngine";
 		artifactRequired="tectonic_attenuator";
 	}

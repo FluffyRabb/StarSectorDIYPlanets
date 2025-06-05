@@ -119,7 +119,7 @@ public class ProvideMaterialsToHypershunt extends BaseMissionIntel implements Ec
 	@Override
 	public String getIcon()
 	{
-		CommoditySpecAPI spec = Global.getSettings().getCommoditySpec("alpha_core");
+		CommoditySpecAPI spec = Global.getSettings().getCommoditySpec(Commodities.ALPHA_CORE);
 	    return spec.getIconName();
 	}
 

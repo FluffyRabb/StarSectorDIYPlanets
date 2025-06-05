@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class GravityDecrease extends TerraformIndustryNeedsArtifact {
 	
@@ -11,7 +12,7 @@ public class GravityDecrease extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0f;
 	
-		hazard="high_gravity";
+		hazard=Conditions.HIGH_GRAVITY;
 		tag="GravityDecrease";
 		artifactRequired="gravity_oscillator";
 	}

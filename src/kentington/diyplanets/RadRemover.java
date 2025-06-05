@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class RadRemover extends TerraformIndustryNeedsArtifact {
 	
@@ -11,7 +12,7 @@ public class RadRemover extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0f;
 	
-		hazard="irradiated";
+		hazard=Conditions.IRRADIATED;
 		tag="RadRemover";
 		artifactRequired="rad_remover";
 	}

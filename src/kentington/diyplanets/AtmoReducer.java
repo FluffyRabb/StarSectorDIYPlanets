@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class AtmoReducer extends TerraformIndustryNeedsArtifact {
 
@@ -11,7 +12,7 @@ public class AtmoReducer extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.5f;
 	
-		hazard="dense_atmosphere";
+		hazard=Conditions.DENSE_ATMOSPHERE;
 		tag="AtmoReducer";
 		artifactRequired="atmo_mineralizer";
 	}

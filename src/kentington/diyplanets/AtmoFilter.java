@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class AtmoFilter extends TerraformIndustryNeedsArtifact {
 	
@@ -11,7 +12,7 @@ public class AtmoFilter extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.5f;
 	
-		hazard="toxic_atmosphere";
+		hazard=Conditions.TOXIC_ATMOSPHERE;
 		tag="AtmoFilter";
 		artifactRequired="atmo_mineralizer";
 	}

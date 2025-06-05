@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.comm.CommMessageAPI.MessageClickAction;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class TerraformIndustryAddHazard extends TerraformIndustryNeedsArtifact {
 
@@ -29,7 +30,7 @@ public class TerraformIndustryAddHazard extends TerraformIndustryNeedsArtifact {
 			return false;
 		if(disqualifyCondition2!=null && market.hasCondition(disqualifyCondition2))
 			return false;
-		if(!allowHabitable&&market.hasCondition("habitable"))
+		if(!allowHabitable&&market.hasCondition(Conditions.HABITABLE))
 			return false;
 		if(market.hasIndustry(oppositeIndustry))
 			return false;

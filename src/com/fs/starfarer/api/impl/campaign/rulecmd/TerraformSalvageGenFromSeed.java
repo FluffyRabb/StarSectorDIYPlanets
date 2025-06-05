@@ -24,7 +24,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.ids.FleetTypes;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import com.fs.starfarer.api.impl.campaign.ids.ShipRoles;
-import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Misc.Token;
 
@@ -150,7 +149,7 @@ public class TerraformSalvageGenFromSeed extends BaseCommandPlugin {
 						member.getRepairTracker().setCR(member.getRepairTracker().getMaxCR());
 					}
 					
-					PersonAPI person = OfficerManagerEvent.createOfficer(defenders.getFaction(), 20, SkillPickPreference.GENERIC, random);
+					PersonAPI person = OfficerManagerEvent.createOfficer(defenders.getFaction(), 20, SkillPickPreference.ANY, random);
 					defenders.setCommander(person);
 					defenders.getFlagship().setCaptain(person);
 			}

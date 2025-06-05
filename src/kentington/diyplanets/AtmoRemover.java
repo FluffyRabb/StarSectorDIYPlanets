@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class AtmoRemover extends TerraformIndustryAddHazard {
 
@@ -11,14 +12,15 @@ public class AtmoRemover extends TerraformIndustryAddHazard {
 	
 		hazardAmount=-0.5f;
 	
-		hazard="no_atmosphere";
+		hazard=Conditions.NO_ATMOSPHERE;
 		tag="AtmoRemover";
 		artifactRequired="atmo_sublimator";
 		oppositeIndustry="atmo_pump";
-		hazardAlsoRemoved="extreme_weather";
-		hazardAlsoRemoved2="thin_atmosphere";
-		disqualifyCondition="toxic_atmosphere";
-		disqualifyCondition2="thick_atmosphere";
+		hazardAlsoRemoved=Conditions.EXTREME_WEATHER;
+		hazardAlsoRemoved2=Conditions.THIN_ATMOSPHERE;
+		disqualifyCondition=Conditions.TOXIC_ATMOSPHERE;
+		disqualifyCondition2=Conditions.DENSE_ATMOSPHERE;
+		
 	}
 	
 	@Override

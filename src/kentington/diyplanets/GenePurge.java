@@ -14,6 +14,7 @@ import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.MessageIntel;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class GenePurge extends BaseIndustry {
 
@@ -32,7 +33,7 @@ public class GenePurge extends BaseIndustry {
 	public boolean isAvailableToBuild() {
 		if (!super.isAvailableToBuild()) return false;
 		
-		return market.hasCondition("inimical_biosphere");
+		return market.hasCondition(Conditions.INIMICAL_BIOSPHERE);
 	}
 
 	@Override
@@ -154,7 +155,7 @@ public class GenePurge extends BaseIndustry {
 			reapply();
 			building=false;
 		} else {
-			market.removeCondition("inimical_biosphere");
+			market.removeCondition(Conditions.INIMICAL_BIOSPHERE);
 			market.getHazard().unmodifyFlat("GenePurge");
 			market.removeIndustry("genepurge", null, false);
 			if (market.isPlayerOwned()) {

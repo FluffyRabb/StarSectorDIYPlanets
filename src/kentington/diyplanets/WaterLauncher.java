@@ -9,6 +9,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI.MarketInteractionMode;
 import com.fs.starfarer.api.impl.campaign.DebugFlags;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Planets;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
@@ -29,7 +30,7 @@ public class WaterLauncher extends BaseIndustry {
 		
 		String planetType = market.getPlanetEntity().getSpec().getPlanetType();
 		
-		return planetType.equals("ice_giant") || planetType.equals("frozen") || planetType.equals("frozen1") || planetType.equals("frozen2") || planetType.equals("frozen3") || planetType.equals("cryovolcanic") || planetType.equals("rocky_ice") || planetType.equals("water");
+		return planetType.equals(Planets.ICE_GIANT) || planetType.equals(Planets.FROZEN) || planetType.equals(Planets.FROZEN1) || planetType.equals(Planets.FROZEN2) || planetType.equals(Planets.FROZEN3) || planetType.equals(Planets.CRYOVOLCANIC) || planetType.equals(Planets.ROCKY_ICE) || planetType.equals(Planets.PLANET_WATER);
 	}
 
 	@Override

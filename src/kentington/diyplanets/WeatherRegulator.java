@@ -1,6 +1,7 @@
 package kentington.diyplanets;
 
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
 public class WeatherRegulator extends TerraformIndustryNeedsArtifact {
 	
@@ -12,7 +13,7 @@ public class WeatherRegulator extends TerraformIndustryNeedsArtifact {
 	
 		hazardAmount=0.25f;
 	
-		hazard="extreme_weather";
+		hazard=Conditions.EXTREME_WEATHER;
 		tag="WeatherRegulator";
 		artifactRequired="weather_core";
 	}

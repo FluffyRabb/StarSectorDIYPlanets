@@ -4,7 +4,7 @@
   "author": "Kentington",
   "version": "1.0.20",
   "description": "Adds various options for terraforming planets",
-  "gameVersion": "0.96a-RC10",
+  "gameVersion": "0.98a-RC8",
   "jars":["jars/DIYPlanets.jar"],
   "modPlugin":"kentington.diyplanets.TerraformingModPlugin",
   "suppressVCUnsupported":true
