@@ -2,7 +2,7 @@
   "id": "diyplanets",
   "name": "DIY Planets",
   "author": "Kentington",
-  "version": "1.0.20",
+  "version": "1.0.30",
   "description": "Adds various options for terraforming planets",
   "gameVersion": "0.98a-RC8",
   "jars":["jars/DIYPlanets.jar"],
