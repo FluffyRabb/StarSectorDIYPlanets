@@ -1,0 +1,10 @@
+{
+    "masterVersionFile": "https://raw.githubusercontent.com/FluffyRabb/StarSectorDIYPlanets/master/diyplanets.version",
+    "modName": "DIY Planets",
+    "modThreadId": "27992",
+    "modVersion": {
+        "major": 1,
+        "minor": 0,
+        "patch": 30
+    }
+}
