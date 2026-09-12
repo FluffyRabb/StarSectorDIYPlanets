@@ -45,6 +45,8 @@ public class GenesisBarEvent extends BaseGetCommodityBarEvent {
 			if (system.hasTag(Tags.THEME_CORE_POPULATED)) continue;
 			if (system.hasTag(Tags.THEME_REMNANT_MAIN)) continue;
 			if (system.hasTag(Tags.THEME_REMNANT_RESURGENT)) continue;
+			if (system.getStar() == null) continue;
+			if (system.hasTag(Tags.SYSTEM_CUT_OFF_FROM_HYPER)) continue;
 			
 			float sinceVisit = Global.getSector().getClock().getElapsedDaysSince(system.getLastPlayerVisitTimestamp());
 			if (sinceVisit < 60) continue;
