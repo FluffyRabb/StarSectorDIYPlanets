@@ -161,7 +161,7 @@ public class IntegrationNasty extends BaseIndustry implements MarketImmigrationM
 			reapply();
 			building=false;
 		} else {
-			market.removeCondition(Conditions.DECIVILIZED);
+			market.removeCondition(Conditions.DECIVILIZED_SUBPOP);
 			market.getHazard().unmodifyFlat("Integration");
 			market.getStability().unmodifyFlat("Integration");
 			market.removeIndustry("subjugationcorps", null, false);
