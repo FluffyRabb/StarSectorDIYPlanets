@@ -30,7 +30,7 @@ radoreremoval4,Irradicator (ore removal),60,60,,8,,,structure,,graphics/icons/in
 radoreremoval5,Irradicator (ore removal),60,60,,8,,,structure,,graphics/icons/industry/radremoval.png,kentington.diyplanets.RadRemover6,"The planet-spanning infrastructure needed to operate an irradicator core. This nearly mythic piece of Domain-era technology can accelerate the decay of radioactive isotopes, removing rare ore deposits from a habitable world; obviously, the infrastructure is useless without one.",445
 gravitylow,N-Brane Oscillator (low gravity),120,120,,15,,,structure,,graphics/icons/industry/gravityadjust.png,kentington.diyplanets.LowGrav,"The planet-spanning infrastructure needed to operate an n-brane oscillator core, tweaked to produce a low-gravity planet. This nearly mythic piece of Domain-era technology can permanently adjust the gravitational constant in a region of spacetime; obviously, the infrastructure is useless without one.
 
-WARNING: This structure will add the ìLow Gravityî hazard.",446
-atmoremover,Atmospheric Removal,80,90,,10,,,structure,,graphics/icons/industry/atmosphericpump.png,kentington.diyplanets.AtmoRemover,"Enormous pumps and intake stacks drain the planet's atmosphere into subterranean facilities where gases are chemically transmuted into stable solids. Without Domain-era technology, this can reduce the thickness of a planetís atmosphere, but cannot eliminate it entirely.
+WARNING: This structure will add the ‚ÄúLow Gravity‚Äù hazard.",446
+atmoremover,Atmospheric Removal,80,90,,10,,,structure,,graphics/icons/industry/atmosphericpump.png,kentington.diyplanets.AtmoRemover,"Enormous pumps and intake stacks drain the planet's atmosphere into subterranean facilities where gases are chemically transmuted into stable solids. Without Domain-era technology, this can reduce the thickness of a planet‚Äôs atmosphere, but cannot eliminate it entirely.
 
-WARNING: This structure will add the ìNo Atmosphereî hazard.",447
+WARNING: This structure will add the ‚ÄúNo Atmosphere‚Äù hazard.",447
