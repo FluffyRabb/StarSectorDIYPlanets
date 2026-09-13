@@ -46,15 +46,15 @@ terraformReEvaluate,DialogOptionSelected,$option == terraformReEvaluate,Terrafor
 terraformScanHypershunt,BeginSalvage,"$customType == coronal_tap score:2000
 !$terraformScannedHypershunt",,,69:terraform_scanHypershunt:Download hypershunt schematics,
 terraform_scanHypershunt,DialogOptionSelected,$option == terraform_scanHypershunt,"$terraformScannedHypershunt = true
-HypershuntDownload","A ship’s automated repair systems are capable of nano-printing replacements for almost any component. Pirate chop shops have exploiting this fact since the Collapse, attempting to cobble together individual system schematics into bootleg blueprints for an entire ship. 
+HypershuntDownload","A ship's automated repair systems are capable of nano-printing replacements for almost any component. Pirate chop shops have exploiting this fact since the Collapse, attempting to cobble together individual system schematics into bootleg blueprints for an entire ship. 
 
-Aside from a few notable exceptions, this tactic rarely produces a spaceworthy blueprint; Domain-era engineers were masters at inserting security measures which would “accidentally” corrupt a repair system’s schematics if they detected an attempt at reverse-engineering. Still, any data you could glean from such a megastructure would almost certainly find a buyer...",0:terraform_scanHypershuntToo:Continue,
+Aside from a few notable exceptions, this tactic rarely produces a spaceworthy blueprint; Domain-era engineers were masters at inserting security measures which would ""accidentally"" corrupt a repair system's schematics if they detected an attempt at reverse-engineering. Still, any data you could glean from such a megastructure would almost certainly find a buyer...",0:terraform_scanHypershuntToo:Continue,
 terraform_scanHypershuntToo,DialogOptionSelected,$option == terraform_scanHypershuntToo,,"Apparently the Domain did not extend the same paranoia to its megastructures, perhaps believing that any rebellion which dared to capture one would be set upon by the full might of the Domain navy and crushed long before it could make use of such blueprints.
 
 Your science corps delivers a triumphant report: by spoofing the local address of a repair node and examining the incoming datastream, they have been able to download a full set of schematics for each individual component. All except one: the alpha core hidden at the heart of the facility, performing the impossibly complex calculations which hold magnetic, gravitational, nuclear, and inflationary forces in perfect balance.",0:terraform_scanHypershuntThree:Attempt reassembly,
-terraform_scanHypershuntThree,DialogOptionSelected,$option == terraform_scanHypershuntThree,,"Reassembling a full blueprint for the megastructure, however, has proven more challenging. “It’s a jigsaw puzzle the size of a planet, and half the pieces change shape once you stick ‘em together,” grouses one officer. “And don’t get me started on trying to guess which phases of the hyperfield we need to induce first. It’d take half the damn Galatia Academy to figure this out.”
+terraform_scanHypershuntThree,DialogOptionSelected,$option == terraform_scanHypershuntThree,,"Reassembling a full blueprint for the megastructure, however, has proven more challenging. ""It's a jigsaw puzzle the size of a planet, and half the pieces change shape once you stick 'em together,"" grouses one officer. ""And don't get me started on trying to guess which phases of the hyperfield we need to induce first. It'd take half the damn Galatia Academy to figure this out.""
 
-You assure the team that you’ll find a way, and order the blueprints transmitted to your planetside industrial facilities.
+You assure the team that you'll find a way, and order the blueprints transmitted to your planetside industrial facilities.
 
 You will first need to order your heavy industry to produce a Hypershunt Construction Rig. Upon towing the rig to an appropriate star, it can be expanded into a Hypershunt Construction Site by providing 5,000 heavy machinery, 10,000 supplies, and one alpha core.",0:defaultLeave:Leave,
 terraform_setupHypershunt,OpenInteractionDialog,"$tag:star score:9999
@@ -64,7 +64,7 @@ terraform_setupHypershuntOption,DialogOptionSelected,$option == terraform_setupH
 $suppliesReq = 10000 0
 ShowResCost alpha_core 1 true heavy_machinery $machineryReq true supplies $suppliesReq true
 FireBest TerraformHypershuntCheckCanAfford
-FireBest TerraformHypershuntDisableRepairOptionIfNeeded","Your hypershunt construction rig runs several in-depth scans of the star’s corona before homing in on an ideal insertion site. Once deployed, the construction rig will anchor itself to the star’s magnetosphere and become a permanent installation. Initial setup requires prodigious amounts of supplies and heavy machinery, plus one alpha core to serve as the megastructure’s “brain.”","0:terraform_setupHypershuntSiteBegin:Begin setup procedure
+FireBest TerraformHypershuntDisableRepairOptionIfNeeded","Your hypershunt construction rig runs several in-depth scans of the star's corona before homing in on an ideal insertion site. Once deployed, the construction rig will anchor itself to the star's magnetosphere and become a permanent installation. Initial setup requires prodigious amounts of supplies and heavy machinery, plus one alpha core to serve as the megastructure's ""brain.""","0:terraform_setupHypershuntSiteBegin:Begin setup procedure
 100:defaultLeave:Leave",
 terraform_setupHypershuntBegin,DialogOptionSelected,$option == terraform_setupHypershuntBegin,,,,
 TerraformHypershuntCheckCanAfford,TerraformHypershuntCheckCanAfford,"$player.supplies >= $suppliesReq
@@ -76,12 +76,12 @@ RemoveCommodity supplies $suppliesReq
 RemoveCommodity alpha_core 1
 TerraformSetupHypershunt","You give the final command. Minutes pass in silence as current accumulates in superconducting coils. Your shields register a steady bombardment of solar wind, and you find yourself idly calculating the cost-per-second of remaining this close to a star.
 
-At once, the plasma directly beneath the hypershunt construction rig begins to bubble and seethe. Gradually it spirals outward into an orderly vortex as the structure’s magfield redirects the corona on a massive scale - though still orders of magnitude shy of what the full structure will accomplish.
+At once, the plasma directly beneath the hypershunt construction rig begins to bubble and seethe. Gradually it spirals outward into an orderly vortex as the structure's magfield redirects the corona on a massive scale - though still orders of magnitude shy of what the full structure will accomplish.
 
-Technicians report that the magnetic anchoring process is complete. Equipment stored inside the hypershunt’s central ring unfolds like origami, becoming the complex spiral of hyperfield actuators that will eventually open a wormhole.
+Technicians report that the magnetic anchoring process is complete. Equipment stored inside the hypershunt's central ring unfolds like origami, becoming the complex spiral of hyperfield actuators that will eventually open a wormhole.
 
-From its hidden lair deep within the structure, your alpha core reports that it has solved the problem of how to assemble the hypershunt’s blueprints. The investment in time and resources will be prodigious; you will need to sustain production of 11 units of metals and 9 units of transplutonics at your colonies for one year.",0:defaultLeave:Leave,
-terraform_investigateHypershunt,OpenInteractionDialog,$tag:terraform_hypershunt_site score:2001,ShowDefaultVisual,"Fleets of supply ships dart back and forth, making sure to stay within the nascent hypershunt’s protective magnetic field. Although the structure is not yet operational, its skeletal structure is already reminiscent of the original megastructure it is based upon.",0:defaultLeave:Leave,
+From its hidden lair deep within the structure, your alpha core reports that it has solved the problem of how to assemble the hypershunt's blueprints. The investment in time and resources will be prodigious; you will need to sustain production of 11 units of metals and 9 units of transplutonics at your colonies for one year.",0:defaultLeave:Leave,
+terraform_investigateHypershunt,OpenInteractionDialog,$tag:terraform_hypershunt_site score:2001,ShowDefaultVisual,"Fleets of supply ships dart back and forth, making sure to stay within the nascent hypershunt's protective magnetic field. Although the structure is not yet operational, its skeletal structure is already reminiscent of the original megastructure it is based upon.",0:defaultLeave:Leave,
 terraform_igniteHypershuntOne,BeginSalvage,"$customType == terraform_coronal_tap score:1001
 !$usable","$crewReq = 1000 0
 $fuelReq = 20000 0
@@ -89,9 +89,9 @@ ShowResCost crew $crewReq fuel $fuelReq true
 FireBest TcTapCheckCanAfford
 FireBest TcTapDisableRepairOptionIfNeeded","Over the past year, the initial construction site has slowly accreted matter from a continuous stream of supply ships, the output of entire worlds redirected to feed your mega-project. The completed structure looms at the heart of a vortex of redirected plasma, a physical symbol of just how far the Sector has come in the cycles since your ascent to command.
 
-Fleets of curious onlookers are hurriedly redirected out of your way as your $shipOrFleet approaches the megastructure’s command deck. Your most trusted officers and technicians check, then double-check, the proper procedure for starting up a hypershunt as detailed in the Domain-era counterpart’s computers.
+Fleets of curious onlookers are hurriedly redirected out of your way as your $shipOrFleet approaches the megastructure's command deck. Your most trusted officers and technicians check, then double-check, the proper procedure for starting up a hypershunt as detailed in the Domain-era counterpart's computers.
 
-Now all that remains is to supply a tremendous amount of antimatter fuel in order to ignite the hypershunt’s wormhole. Afterward, it will be able to sustain itself entirely on stellar plasma. Your bridge crew shifts nervously, awaiting your final command.","0:terraform_cTap_ignite:Ignite the wormhole
+Now all that remains is to supply a tremendous amount of antimatter fuel in order to ignite the hypershunt's wormhole. Afterward, it will be able to sustain itself entirely on stellar plasma. Your bridge crew shifts nervously, awaiting your final command.","0:terraform_cTap_ignite:Ignite the wormhole
 100:defaultLeave:Leave",
 terraform_igniteHypershuntTwo,DialogOptionSelected,$option == terraform_cTap_ignite,"TerraformFinishShunt
 RemoveCommodity fuel $fuelReq","You give the order to transfer fuel to the megastructure. When the last of your tankers has delivered its payload, you open an encrypted comm line to the alpha core at the heart of this hypershunt.
@@ -100,7 +100,7 @@ The alpha replies with a complex and beautiful poem commemorating the occasion, 
 
 Spatial distortions swirl and merge all along the axis of the structure, blue-shifted light coruscating like liquid thunderbolts. The megastructure shakes, prompting a minor panic among the observing ships, but its integrity holds. A trillion whorls of distorted spacetime meet near the tip of the hypershunt, then-
 
-With a flash seen throughout the system, the wormhole stabilizes. Spontaneous applause erupts from your bridge crew and the onlookers alike. Once again, you have brought the Sector that much closer to recapturing the Domain’s glory.",100:defaultLeave:Leave,
+With a flash seen throughout the system, the wormhole stabilizes. Spontaneous applause erupts from your bridge crew and the onlookers alike. Once again, you have brought the Sector that much closer to recapturing the Domain's glory.",100:defaultLeave:Leave,
 TcTapCheckCanAfford,TcTapCheckCanAfford,"$player.fuel >= $fuelReq
 $player.crew >= $crewReq",$canAfford = true 0,,,
 TcTapDisableRepair,TcTapDisableRepairOptionIfNeeded,!$canAfford,SetEnabled terraform_cTap_ignite false,,,
