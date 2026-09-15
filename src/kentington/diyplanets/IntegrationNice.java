@@ -37,6 +37,7 @@ public class IntegrationNice extends BaseIndustry implements MarketImmigrationMo
 	
 	@Override
 	public boolean isAvailableToBuild() {
+		if (!kentington.diyplanets.DIYPlanetsAotDResearch.isBuildingResearchComplete(getSpec() == null ? getId() : getSpec().getId())) return false;
 		if (!super.isAvailableToBuild()) return false;
 		
 		return market.hasCondition(Conditions.DECIVILIZED_SUBPOP) && !market.hasIndustry("subjugationcorps") && (market.getConstructionQueue() == null || !market.getConstructionQueue().hasItem("subjugationcorps"));
