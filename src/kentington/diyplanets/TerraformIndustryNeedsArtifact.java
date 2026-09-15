@@ -249,6 +249,7 @@ public class TerraformIndustryNeedsArtifact extends BaseIndustry{
 	
 	@Override
 	public boolean isAvailableToBuild() {
+		if (!kentington.diyplanets.DIYPlanetsAotDResearch.isBuildingResearchComplete(getSpec() == null ? getId() : getSpec().getId())) return false;
 		if (!super.isAvailableToBuild()) return false;
 		if(market.getPlanetEntity() == null || market.getPlanetEntity().getSpec() == null || market.getPlanetEntity().getSpec().getPlanetType() == null)
 			return false;

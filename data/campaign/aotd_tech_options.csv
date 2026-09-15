@@ -1,0 +1,32 @@
+id,name,tier,timeToResearch,reqToResearchFirst,itemReqToResearch,iconId,rewards,columnNumber,rowNumber,isResearchedFromStart,otherReq,tags,modId
+diy_tech_population_reclamation,Population Reclamation Protocols,3,30,aotd_tech_hazmat_equipment,"domestic_goods:500,hand_weapons:100",none,"subjugationcorps:industry
+integrationcorps:industry",0,0,false,,,diyplanets
+diy_tech_biosphere_purification,Biosphere Purification,3,60,diy_tech_population_reclamation,"research_databank:4,drugs:100,organics:300",none,genepurge:industry,1,0,false,,,diyplanets
+diy_tech_xenoaquaculture,Xenoaquaculture,3,90,diy_tech_biosphere_purification,"research_databank:10,lobster:200",none,lobsterbreeding:industry,2,0,false,,,diyplanets
+diy_tech_industrial_ecological_remediation,Industrial Ecological Remediation,3,20,aotd_tech_agriculture,"research_databank:4,organics:500",none,environmentalagency:industry,0,2,false,,,diyplanets
+diy_tech_atmospheric_mass_control,Atmospheric Mass Control,3,30,diy_tech_industrial_ecological_remediation,"research_databank:8,heavy_machinery:300",none,"atmospherepump:industry
+atmoremover:industry",1,2,false,,,diyplanets
+diy_tech_advanced_atmospheric_processing,Advanced Atmospheric Processing,3,45,diy_tech_atmospheric_mass_control,"research_databank:12,heavy_machinery:500",none,"atmospherefilter:industry
+atmospherereducer:industry
+atmospherepump2:industry",2,2,false,,,diyplanets
+diy_tech_planetary_weather_control,Planetary Weather Control,3,60,diy_tech_advanced_atmospheric_processing,"research_databank:16,purified_rare_metal:300",none,weatherregulator:industry,3,2,false,,,diyplanets
+diy_tech_tectonic_stabilization,Tectonic Stabilization,3,30,aotd_tech_antimatter_production,"research_databank:6,volatiles:200",none,tectonicengine:industry,0,4,false,,,diyplanets
+diy_tech_deep_mantle_engineering,Deep Mantle Engineering,3,40,diy_tech_tectonic_stabilization,"research_databank:10,fuel:800",none,tectonicengine2:industry,1,4,false,,,diyplanets
+diy_tech_n_brane_field_engineering,N-Brane Field Engineering,3,60,diy_tech_deep_mantle_engineering,"research_databank:14,advanced_components:300",none,"gravityincrease:industry
+gravitydecrease:industry
+gravitylow:industry",2,4,false,,,diyplanets
+diy_tech_radiological_transmutation,Radiological Transmutation,3,75,diy_tech_n_brane_field_engineering,"research_databank:16,rare_metals:400",none,"radremoval:industry
+radoreremoval:industry
+radoreremoval2:industry
+radoreremoval3:industry
+radoreremoval4:industry
+radoreremoval5:industry",3,4,false,,,diyplanets
+diy_tech_interplanetary_hydrology,Interplanetary Hydrology,3,20,aotd_tech_orbital_assembly,"research_databank:4,metals:500",none,"waterlauncher:industry
+waterreceiver:industry",0,6,false,,,diyplanets
+diy_tech_macroclimate_engineering,Macroclimate Engineering,3,40,diy_tech_interplanetary_hydrology,"research_databank:8,heavy_machinery:300",none,"waterreceiver2:industry
+solarshade:industry
+solarreflector:industry",1,6,false,,,diyplanets
+diy_tech_domain_era_stellar_engineering,Domain-Era Stellar Engineering,3,60,diy_tech_macroclimate_engineering,"research_databank:12,refined_metal:500,domain_heavy_machinery:200",none,"solarreflector2:industry
+solarshade2:industry
+lightdistributor:industry",2,6,false,,,diyplanets
+diy_tech_planetary_climate_synthesis,Planetary Climate Synthesis,3,120,"diy_tech_planetary_weather_control,diy_tech_radiological_transmutation,diy_tech_domain_era_stellar_engineering","research_databank:20,alpha_core:1,domain_heavy_machinery:500",none,perfectclimate:industry,4,4,false,,,diyplanets
