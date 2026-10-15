@@ -17,6 +17,9 @@ public class TerraformingUtilities {
 			return;
 
 		String planetType = planet.getPlanetEntity().getSpec().getPlanetType();
+		// planets reclassed by older versions only had their spec changed; make the real type match
+		if(!planetType.equals(planet.getPlanetEntity().getTypeId()))
+			ChangePlanetClass(planet, planetType);
 		try
 		{
 			Global.getSettings().getSpec(PlanetGenDataSpec.class, planetType, false);
@@ -174,6 +177,14 @@ public class TerraformingUtilities {
 	
 	public static String ChangePlanetClass(MarketAPI planet, String newPlanetType)
 	{
+		// changeType also sets the type that getTypeId() returns, which industries like Aquaculture check.
+		// It needs procgen data for the new type, which stars (brown dwarf) lack, so those keep the spec copy below.
+		if(Global.getSettings().getSpec(PlanetGenDataSpec.class, newPlanetType, true) != null)
+		{
+			planet.getPlanetEntity().changeType(newPlanetType, Misc.random);
+			return newPlanetType;
+		}
+
 		PlanetSpecAPI myspec = planet.getPlanetEntity().getSpec();
 		
 		for (PlanetSpecAPI spec : Global.getSettings().getAllPlanetSpecs()) {
